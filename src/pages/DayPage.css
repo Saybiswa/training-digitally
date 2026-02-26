@@ -1,0 +1,213 @@
+/* ===============================
+   VARIABLES
+================================= */
+:root {
+  /* Colors */
+  --bg-main: #ffffff;
+  --bg-container: #f9f9f9;
+  --bg-locked: #ffe5e5;
+  --bg-completed: #f6fff8;
+  --text-main: #222222;
+  --text-locked: #d00000;
+  --text-completed: #28a745;
+  --btn-primary: #007bff;
+  --btn-primary-hover: #0063cc;
+  --btn-success: #28a745;
+  --btn-success-hover: #218838;
+  --btn-warning: #ff9800;
+  --btn-warning-hover: #e68900;
+  --btn-disabled: #cccccc;
+
+  /* Spacing */
+  --spacing-container: 40px;
+  --spacing-card-padding: 60px;
+  --spacing-card-gap: 15px;
+  --spacing-topic-gap: 20px;
+
+  /* Fonts */
+  --font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --font-size-title: 16px;
+  --font-size-header: 28px;
+
+  /* Shadows */
+  --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* ===============================
+   GLOBAL STYLES
+================================= */
+body {
+  margin: 0;
+  font-family: var(--font-family);
+}
+
+.daypage-container {
+  min-height: 80vh;
+  background-image: url("../images/lg-bg.png"); /* adjust path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  max-width: 1500px;
+  margin: var(--spacing-container) auto;
+  padding: 20px;
+}
+
+/* ===============================
+   HEADER
+================================= */
+.daypage-container h2 {
+  font-size: var(--font-size-header);
+  margin-bottom: 25px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.daypage-container button:first-of-type {
+  background: #f59b9b;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.daypage-container button:first-of-type:hover {
+  background: #fb4242;
+}
+
+/* ===============================
+   LOCKED DAY MESSAGE
+================================= */
+.locked-day {
+  background: var(--bg-locked);
+  color: var(--text-locked);
+  padding: 22px;
+  border-radius: 2px;
+  margin-bottom: 20px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ===============================
+   TOPICS GRID
+================================= */
+.topics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--spacing-topic-gap);
+}
+
+/* ===============================
+   TOPIC CARD
+================================= */
+.topic-card {
+  background: var(--bg-main);
+  border-radius: 12px;
+  padding: var(--spacing-card-padding);
+  box-shadow: var(--shadow-card);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-card-gap);
+}
+
+.topic-card:hover {
+  transform: translateY(-5px);
+}
+
+.topic-card.locked {
+  background: var(--bg-container);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.topic-card.completed {
+  border: 2px solid var(--text-completed);
+  background: var(--bg-completed);
+}
+
+/* ===============================
+   TOPIC TITLE
+================================= */
+.topic-title {
+  font-size: var(--font-size-title);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-main);
+}
+
+/* ===============================
+   BUTTONS
+================================= */
+.topic-card button {
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.topic-card button:nth-of-type(1) {
+  background-color: var(--btn-primary);
+  color: white;
+}
+
+.topic-card button:nth-of-type(1):hover:not(:disabled) {
+  background-color: var(--btn-primary-hover);
+}
+
+.topic-card button:nth-of-type(2) {
+  background-color: var(--btn-success);
+  color: white;
+}
+
+.topic-card button:nth-of-type(2):hover:not(:disabled) {
+  background-color: var(--btn-success-hover);
+}
+
+.topic-card button:disabled {
+  background-color: var(--btn-disabled) !important;
+  cursor: not-allowed;
+}
+
+/* ===============================
+   FINAL ASSESSMENT SECTION
+================================= */
+.daypage-container > div:last-of-type {
+  margin-top: 40px;
+}
+
+.daypage-container > div:last-of-type button {
+  background-color: var(--btn-warning);
+  color: white;
+  padding: 10px 18px;
+  font-weight: 600;
+  border-radius: 8px;
+}
+
+.daypage-container > div:last-of-type button:hover:not(:disabled) {
+  background-color: var(--btn-warning-hover);
+}
+
+/* ===============================
+   RESPONSIVE
+================================= */
+@media (max-width: 768px) {
+  .daypage-container {
+    padding: 20px;
+  }
+
+  .topics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .daypage-container h2 {
+    font-size: 22px;
+  }
+}
